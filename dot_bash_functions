@@ -1,0 +1,6 @@
+#!/bin/sh
+
+chezmoi_apply_and_source() {
+  chezmoi apply
+  source "${HOME}/.zshrc"
+}

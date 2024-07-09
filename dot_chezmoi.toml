@@ -1,0 +1,2 @@
+[scripts]
+run_on_start = ["${HOME}/setup"]
