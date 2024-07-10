@@ -21,7 +21,7 @@ echo "Creating custom ~/.dotfile"
 
 if [[ ! -f "${HOME}/.dotfile" ]]; then
   # touch "${HOME}/.dotfile"
-  echo "#!/bin/zsh\n\necho '🏡 Home sweet home'" > "${HOME}/.dotfile"
+  echo "#!/bin/zsh\n\nverbose '🏡 Home sweet home'" > "${HOME}/.dotfile"
 else
   verbose "~/.dotfile already exists!"
 fi

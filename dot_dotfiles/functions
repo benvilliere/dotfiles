@@ -12,7 +12,7 @@ function import() {
   if [[ ! -f "${file}" ]]; then
     echo "Error: Can't import file ${file} as it does not exist"
   else
-    verbose "Import: ${file}"
+    verbose "💾 Importing: ${file}"
     source "${file}"
   fi
 }
