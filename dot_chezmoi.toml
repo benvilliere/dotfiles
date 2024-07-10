@@ -1,2 +1,2 @@
 [scripts]
-run_on_start = ["${HOME}/.dotfiles/setup"]
+run_on_start = ["${HOME}/.dotfiles/scripts/setup"]
