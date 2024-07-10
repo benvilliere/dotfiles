@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+# Running powerlevel10k: https://github.com/romkatv/powerlevel10k
+
+# Activating p10k
+source "${HOMEBREW_PREFIX}/share/powerlevel10k/powerlevel10k.zsh-theme"
+
+# Loading preferred settings
+source "${HOME}/.p10k.zsh"

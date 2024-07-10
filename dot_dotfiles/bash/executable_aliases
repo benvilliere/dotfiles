@@ -1,3 +1,6 @@
 #!/bin/sh
 
+# chezmoi
 alias cm="chezmoi"
+alias edit="chezmoi_cd_and_code"
+alias save="chezmoi_apply_and_source"
