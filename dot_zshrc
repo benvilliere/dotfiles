@@ -106,13 +106,13 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Load cross-compatible bash function definitions from separate file.
-if [ -f "${HOME}/.bash_functions" ]; then
-    \. "${HOME}/.bash_functions"
+if [ -f "${HOME}/.dotfiles/bash/functions" ]; then
+    \. "${HOME}/.dotfiles/bash/functions"
 fi
 
 # Load cross-compatible bash alias definitions from separate file.
-if [ -f "${HOME}/.bash_aliases" ]; then
-    \. "${HOME}/.bash_aliases"
+if [ -f "${HOME}/.dotfiles/bash/aliases" ]; then
+    \. "${HOME}/.dotfiles/bash/aliases"
 fi
 
 echo "Sourced ~/.zshrc"
