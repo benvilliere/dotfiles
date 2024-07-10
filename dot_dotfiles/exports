@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-# dotfiles
 export DOTFILES_VERBOSE_OUTPUT=1
 
 # NVM

@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-set -e
+# set -e
 
 echo "🏡 Making yourself at home..."
 
@@ -14,5 +14,16 @@ fi
 
 echo "📦 Installing Homebrew Packages"
 brew bundle --file "${HOME}/.dotfiles/brew/Brewfile"
+
+# have "${HOME}/.dotfile" "#!/bin/zsh\n"
+
+echo "Creating custom ~/.dotfile"
+
+if [[ ! -f "${HOME}/.dotfile" ]]; then
+  # touch "${HOME}/.dotfile"
+  echo "#!/bin/zsh\n\necho '🏡 Home sweet home'" > "${HOME}/.dotfile"
+else
+  verbose "~/.dotfile already exists!"
+fi
 
 echo "Done!"

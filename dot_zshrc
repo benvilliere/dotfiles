@@ -1,16 +1,9 @@
-# Loading bash files
-dotfiles=(
-  "${HOME}/.dotfiles/bash/exports"
-  "${HOME}/.dotfiles/bash/functions"
-  "${HOME}/.dotfiles/bash/aliases"
-  "${HOME}/.dotfiles/bash/theme"
-  "${HOME}/.dotfiles/bash/plugins"
-)
+# Importing ~/.dotfiles/*
+source "${HOME}/.dotfiles/exports"
+source "${HOME}/.dotfiles/functions"
+source "${HOME}/.dotfiles/aliases"
+source "${HOME}/.dotfiles/styles"
+source "${HOME}/.dotfiles/plugins"
 
-for file in "${dotfiles[@]}"; do
-  if [[ -f "${file}" ]]; then
-    \. "${file}"
-  fi
-done
-
-verbose "💾 Sourced ~/.zshrc"
+# Importing (optional) ~/.dotfile
+import "${HOME}/.dotfile"

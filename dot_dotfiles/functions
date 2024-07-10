@@ -1,0 +1,71 @@
+#!/bin/zsh
+
+function verbose() {
+  if [[ $DOTFILES_VERBOSE_OUTPUT != 0 ]]; then
+    echo "${1}"
+  fi
+}
+
+function import() {
+  local file="${1}"
+
+  if [[ ! -f "${file}" ]]; then
+    echo "Error: Can't import file ${file} as it does not exist"
+  else
+    verbose "Import: ${file}"
+    source "${file}"
+  fi
+}
+
+# Checks whether a function exists
+function function_exists() {
+  declare -F "${1}" > /dev/null
+}
+
+# Invokes any existing dotfile_ prefixed function
+# Usage: dotfile run setup
+function dotfile() {
+  local function_name="dotfile_${1}"
+  local function_arguments="${*:2}"
+
+  if function_exists "$function_name"; then
+    verbose "Calling function: ${function_name} with argument: ${2}"
+    "${function_name}" "${function_arguments}"
+  else
+    verbose "Error: Function ${function_name} does not exist"
+  fi
+}
+
+# Runs executable script within ~/.dotfiles
+# Usage: dotfile run setup
+function dotfile_run() {
+  verbose "Invoking dotfile_run $@"
+  local script="${HOME}/.dotfiles/${1}"
+
+  if [[ ! -f $script ]]; then
+    echo "Error: provided '${script}' is not an executable script"
+  else
+    verbose "Running: ${script}"
+    . "${script}"
+  fi
+}
+
+function dotfile_save() {
+  verbose "🏡 Applying chezmoi changes"
+  chezmoi apply
+  verbose "💾 Sourcing ~/.zshrc"
+  source "${HOME}/.zshrc"
+}
+
+function dotfile_update() {
+  verbose "🏡 Updating remote chezmoi changes"
+  chezmoi update
+  verbose "💾 Sourcing ~/.zshrc"
+  source "${HOME}/.zshrc"
+}
+
+function dotfile_edit() {
+  verbose "🏡 Coming home"
+  chezmoi cd
+  code .
+}

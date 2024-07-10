@@ -3,5 +3,5 @@
 # zsh-autocomplete: https://github.com/marlonrichert/zsh-autocomplete
 # TODO: only apply this on ubuntu
 export skip_global_compinit=1
-source "${HOMEBREW_PREFIX}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
+source "${HOMEBREW_PREFIX}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"

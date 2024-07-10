@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+# set -e
+
+echo "🏡 Good bye..."
+
+echo "Deleting ~/.dotfiles/*"
+rm -rf "${HOME}/.dotfiles"
+
+echo "Deleting ~/.dotfile"
+rm "${HOME}/.dotfile"
+
+echo "Don't forget to cleanup your ~/.zsrch"
