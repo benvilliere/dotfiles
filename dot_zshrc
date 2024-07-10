@@ -4,6 +4,7 @@ dotfiles=(
   "${HOME}/.dotfiles/bash/functions"
   "${HOME}/.dotfiles/bash/aliases"
   "${HOME}/.dotfiles/bash/theme"
+  "${HOME}/.dotfiles/bash/plugins"
 )
 
 for file in "${dotfiles[@]}"; do
