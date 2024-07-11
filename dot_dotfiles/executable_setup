@@ -26,4 +26,4 @@ else
   verbose "~/.dotfile already exists!"
 fi
 
-echo "Done!"
+echo "Done ~ 🏡 Welcome home!"

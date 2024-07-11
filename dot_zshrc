@@ -5,5 +5,5 @@ source "${HOME}/.dotfiles/aliases"
 source "${HOME}/.dotfiles/styles"
 source "${HOME}/.dotfiles/plugins"
 
-# Importing (optional) ~/.dotfile
+# Importing ~/.dotfile
 import "${HOME}/.dotfile"

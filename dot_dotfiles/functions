@@ -10,7 +10,7 @@ function import() {
   local file="${1}"
 
   if [[ ! -f "${file}" ]]; then
-    echo "Error: Can't import file ${file} as it does not exist"
+    echo "Error: file '${file}' does not exist"
   else
     verbose "💾 Importing: ${file}"
     source "${file}"
@@ -19,7 +19,21 @@ function import() {
 
 # Checks whether a function exists
 function function_exists() {
-  declare -F "${1}" > /dev/null
+  if compgen -A function | grep -q "^${1}$"; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+# Lists dotfile_* functions as commands
+function available_dotfile_commands() {
+  local prefix="${1:-dotfile_}"
+  compgen -A function | grep "^${prefix}" | sed "s/^${prefix}/- /"
+}
+
+function available_dotfile_executables() {
+  find "${HOME}/.dotfiles" -maxdepth 1 -type f -perm -u+x -exec basename {} \; | awk '{print "- " $0}'
 }
 
 # Invokes any existing dotfile_ prefixed function
@@ -28,11 +42,14 @@ function dotfile() {
   local function_name="dotfile_${1}"
   local function_arguments="${*:2}"
 
-  if function_exists "$function_name"; then
+  if function_exists "${function_name}"; then
     verbose "Calling function: ${function_name} with argument: ${2}"
     "${function_name}" "${function_arguments}"
   else
-    verbose "Error: Function ${function_name} does not exist"
+    verbose "Error: dotfile command '${1}' does not exist"
+    echo "--------------------------------------------"
+    echo "Available dotfile commands:"
+    available_dotfile_commands
   fi
 }
 
@@ -43,7 +60,10 @@ function dotfile_run() {
   local script="${HOME}/.dotfiles/${1}"
 
   if [[ ! -f $script ]]; then
-    echo "Error: provided '${script}' is not an executable script"
+    echo "Error: '${script}' is not an executable file"
+    echo "--------------------------------------------"
+    echo "Available executable scripts in ~/.dotfiles:"
+    available_dotfile_executables
   else
     verbose "Running: ${script}"
     . "${script}"
