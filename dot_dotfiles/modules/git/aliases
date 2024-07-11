@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+alias gs='git status'
+alias gd='git diff'
+alias ga='git add'
+alias gp='git push'
+alias stash='git stash'
+alias delete_branch='git_delete_branch'
+alias commit='git_add_commit_push'
+alias git_sync_main='git_sync_with_main_branch'

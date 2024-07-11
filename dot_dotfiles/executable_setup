@@ -18,10 +18,18 @@ brew bundle --file "${HOME}/.dotfiles/brew/Brewfile"
 # have "${HOME}/.dotfile" "#!/bin/zsh\n"
 
 echo "Creating custom ~/.dotfile"
+local $zshrc_injection='source "${HOME}/.dotfile"'
+echo "----"
+echo $injection
+echo "----"
 
 if [[ ! -f "${HOME}/.dotfile" ]]; then
   # touch "${HOME}/.dotfile"
-  echo "#!/bin/zsh\n\nverbose '🏡 Home sweet home'" > "${HOME}/.dotfile"
+  local $injection="\. \"\$\{HOME\}\/.dotfile\""
+  echo "----"
+  echo $injection
+  echo "----"
+  # echo "#!/bin/zsh\n\nverbose '🏡 Home sweet home'" > "${HOME}/.dotfile"
 else
   verbose "~/.dotfile already exists!"
 fi

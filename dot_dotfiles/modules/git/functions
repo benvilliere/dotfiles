@@ -1,0 +1,41 @@
+#!/bin/zsh
+
+function git_current_branch() {
+  git branch --show-current
+}
+
+function git_delete_branch() {
+  current_branch=$(git_current_branch)
+  if [ "$1" = "$current_branch" ]; then
+    git checkout main
+  else
+    git branch -D "$1"
+    git push origin --delete "$1"
+  fi
+}
+
+function git_add_commit_push() {
+  current_branch=$(git_current_branch)
+  # avoiding fatal: The current branch XXXX has no upstream branch.
+  git push --set-upstream origin "${current_branch}"
+  # add all changes, commit and push
+  git add .
+  if [[ "${current_branch}" != "main" ]]; then
+    message="${current_branch} - ${1}"
+  else
+    message="${1}"
+  fi
+  git commit -m "${message}"
+  git push
+  echo "Pushed changes to ${current_branch} with message: ${message}"
+}
+
+function git_sync_with_main_branch() {
+  current_branch=$(git_current_branch)
+  git checkout main
+  git pull
+  git checkout "${current_branch}"
+  git merge main
+  git push
+}
+

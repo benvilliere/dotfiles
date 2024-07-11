@@ -1,3 +1,5 @@
+very_verbose "💾 Sourcing ~/.dotfiles/*"
+
 # Importing ~/.dotfiles/*
 source "${HOME}/.dotfiles/exports"
 source "${HOME}/.dotfiles/functions"
@@ -5,5 +7,6 @@ source "${HOME}/.dotfiles/aliases"
 source "${HOME}/.dotfiles/styles"
 source "${HOME}/.dotfiles/plugins"
 
-# Importing ~/.dotfile
-import "${HOME}/.dotfile"
+source_dotfile_modules
+
+very_verbose "🏡 Home sweet home"

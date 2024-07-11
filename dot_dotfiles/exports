@@ -1,6 +1,8 @@
 #!/bin/zsh
 
 export DOTFILES_VERBOSE_OUTPUT=1
+export DOTFILES_VERY_VERBOSE_OUTPUT=1
+export CURRENT_FILE="${(%):-%x}"
 
 # NVM
 export NVM_DIR="${HOME}/.nvm"

@@ -6,14 +6,9 @@ function verbose() {
   fi
 }
 
-function import() {
-  local file="${1}"
-
-  if [[ ! -f "${file}" ]]; then
-    echo "Error: file '${file}' does not exist"
-  else
-    verbose "💾 Importing: ${file}"
-    source "${file}"
+function very_verbose() {
+  if [[ $DOTFILES_VERY_VERBOSE_OUTPUT != 0 ]]; then
+    echo "${1}"
   fi
 }
 
@@ -27,6 +22,7 @@ function function_exists() {
 }
 
 # Lists dotfile_* functions as commands
+# IDEA: Should the prefix be invokable_ or callable_ instead of dotfile_?
 function available_dotfile_commands() {
   local prefix="${1:-dotfile_}"
   compgen -A function | grep "^${prefix}" | sed "s/^${prefix}/- /"
@@ -36,8 +32,27 @@ function available_dotfile_executables() {
   find "${HOME}/.dotfiles" -maxdepth 1 -type f -perm -u+x -exec basename {} \; | awk '{print "- " $0}'
 }
 
+function source_dotfile_modules() {
+  for module in "${HOME}/.dotfiles/modules"/*; do
+    if [[ -d "${module}" ]]; then
+      for file in "${module}"/*; do
+        source "${file}"
+      done
+    fi
+  done
+}
+
+function source_dotfile() {
+  verbose "💾 Sourcing ~/.dotfile"
+  source "${HOME}/.dotfile"
+}
+
+
 # Invokes any existing dotfile_ prefixed function
-# Usage: dotfile run setup
+# Usage:
+# - dotfile save
+# - dotfile run setup
+# IDEA: Should the prefix be executable_ instead of dotfile_?
 function dotfile() {
   local function_name="dotfile_${1}"
   local function_arguments="${*:2}"
@@ -73,19 +88,23 @@ function dotfile_run() {
 function dotfile_save() {
   verbose "🏡 Applying chezmoi changes"
   chezmoi apply
-  verbose "💾 Sourcing ~/.zshrc"
-  source "${HOME}/.zshrc"
+  source_dotfile
 }
 
 function dotfile_update() {
   verbose "🏡 Updating remote chezmoi changes"
   chezmoi update
-  verbose "💾 Sourcing ~/.zshrc"
-  source "${HOME}/.zshrc"
+  source_dotfile
+  very_verbose "Done."
 }
 
 function dotfile_edit() {
   verbose "🏡 Coming home"
   chezmoi cd
   code .
+  very_verbose "🏡 Welcome back!"
+}
+
+function current_file() {
+  echo "${(%):-%x}"
 }
