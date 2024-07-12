@@ -13,12 +13,12 @@ fi
 echo "📦 Installing chezmoi"
 brew install chezmoi > /dev/null 2>&1
 
-if [[ ! -d "${HOME}/.dotfiles" ]]; then
+# if [[ ! -d "${HOME}/.dotfiles" ]]; then
   echo "🏡 Initializing chezmoi"
-  chezmoi init benvilliere/dotfiles
-else
-  echo "🏡 ~/.dotfiles already setup"
-fi
+  chezmoi init benvilliere
+#else
+#  echo "🏡 ~/.dotfiles already setup"
+#fi
 
 echo "🏡 Applying chezmoi"
 chezmoi apply
