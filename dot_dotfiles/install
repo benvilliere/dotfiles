@@ -10,6 +10,12 @@ else
   brew update > /dev/null 2>&1
 fi
 
+echo "📦 Installing zsh"
+brew install zsh > /dev/null 2>&1
+
+echo "💾 Setting zsh as the default shell"
+chsh -s $(which zsh)
+
 echo "📦 Installing chezmoi"
 brew install chezmoi > /dev/null 2>&1
 
@@ -29,8 +35,7 @@ if ! grep -Fxq "${zshrc_directive}" "${HOME}/.zshrc"; then
 fi
 
 echo "💾 Sourcing ~/.zshrc file"
-. "${HOME}/.zshrc"
-
-exec zsh
+zsh "${HOME}/.zshrc"
 
 echo "✅ Done."
+exec zsh
