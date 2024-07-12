@@ -10,13 +10,14 @@ This repo is a way for me to quickly configure a new machine with the tools I us
 
 Here are the tools it installs and configures:
 
-- Package Manager: [Homebrew](https://brew.sh)
-- Terminal: [Hyper](https://hyper.is/)
-- Theme: [powerlevel10k](https://github.com/romkatv/powerlevel10k), [glow](https://github.com/charmbracelet/glow)
-- Plugins: [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
-- Local Generative AI: [Ollama](https://ollama.com/) (adds `ask` and `chat` aliases)
-- Python: [Poetry](https://python-poetry.org/)
-- Node: [nvm](https://github.com/nvm-sh/nvm), [bun](https://bun.sh/)
+- 🍏 Compatible with macOS and Ubuntu
+- 📦 Package Manager: [🍺 Homebrew](https://brew.sh)
+- 💲 Terminal: [⚡️ Hyper](https://hyper.is/)
+- 💅 Theme: [powerlevel10k](https://github.com/romkatv/powerlevel10k), [glow](https://github.com/charmbracelet/glow)
+- 🔌 Plugins: [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
+- 🧠 Local Generative AI: [Ollama](https://ollama.com/) (adds `ask` and `chat` aliases)
+- 🐍 Python: [Poetry](https://python-poetry.org/)
+- ⌾ Node: [nvm](https://github.com/nvm-sh/nvm), [bun](https://bun.sh/)
 
 There's actually a lot more stuff that you can find listed in the [Brewfile](./dot_dotfiles/brew/Brewfile). You should consider forking this repo and make it your own before installing, as you may not want to use all the stuff I'm using.
 
