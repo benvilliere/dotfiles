@@ -2,10 +2,9 @@
 
 ## 🏡 Chezmoi dotfiles repository
 
-```sh
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply benvilliere
-```
+### Getting started
 
-```
-sh -c "$(curl -fsLS https://raw.githubusercontent.com/benvilliere/dotfiles/main/dot_dotfiles/executable_install)"
+Run the following command:
+```sh
+sh -c "$(curl -fsLS https://raw.githubusercontent.com/benvilliere/dotfiles/HEAD/dot_dotfiles/install)"
 ```
