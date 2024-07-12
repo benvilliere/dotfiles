@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-
 echo "🏡 Goodbye!"
 
 echo "🗑️ Deleting ~/.dotfiles/*"

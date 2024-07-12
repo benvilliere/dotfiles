@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-echo "🏡 Making yourself at home..."
-
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply benvilliere
