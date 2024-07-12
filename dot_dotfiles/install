@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 echo "🏡 Making yourself at home..."
 
@@ -10,16 +10,27 @@ else
   brew update > /dev/null 2>&1
 fi
 
+echo "📦 Installing chezmoi"
+brew install chezmoi > /dev/null 2>&1
+
+echo "🏡 Initializing chezmoi"
+chezmoi init benvilliere 2>&1
+
+echo "🏡 Applying chezmoi"
+chezmoi apply
+
 echo "📦 Installing Homebrew Packages"
 brew bundle --file "${HOME}/.dotfiles/brew/Brewfile" > /dev/null 2>&1
 
 echo "💾 Updating ~/.zshrc file"
-local injection='source "${HOME}/.dotfile"'
-if ! grep -Fxq "${injection}" "${HOME}/.zshrc"; then
-  echo "${injection}" >> "${HOME}/.zshrc"
+zshrc_directive='source "${HOME}/.dotfile"'
+if ! grep -Fxq "${zshrc_directive}" "${HOME}/.zshrc"; then
+  echo "${zshrc_directive}" >> "${HOME}/.zshrc"
 fi
 
 echo "💾 Sourcing ~/.zshrc file"
-source "${HOME}/.zshrc"
+. "${HOME}/.zshrc"
+
+exec zsh
 
 echo "✅ Done."

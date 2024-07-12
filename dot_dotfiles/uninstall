@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 echo "🏡 Goodbye!"
 
@@ -19,8 +19,8 @@ echo "🧹 Cleaning up ~/.zshrc file"
 sed -i '' '/source "${HOME}\/.dotfile"/d' "${HOME}/.zshrc"
 
 echo "💾 Reloading ~/.zshrc"
-source "${HOME}/.zshrc"
-
-echo "✅ Done."
+. "${HOME}/.zshrc"
 
 exec zsh
+
+echo "✅ Done."
