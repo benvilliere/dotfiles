@@ -20,8 +20,11 @@ else
   echo "🏡 ~/.dotfiles already setup"
 fi
 
+echo "🏡 Applying chezmoi"
+chezmoi apply
+
 echo "💾 Updating ~/.zshrc file"
-local injection='source "${HOME}/.dotfile"'
+injection='source "${HOME}/.dotfile"'
 if ! grep -Fxq "${injection}" "${HOME}/.zshrc"; then
   echo "${injection}" >> "${HOME}/.zshrc"
 fi
