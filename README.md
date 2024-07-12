@@ -11,6 +11,7 @@ This repo is a way for me to quickly configure a new machine with the tools I us
 Here are the tools it installs and configures:
 
 - 🍏 Compatible with macOS and Ubuntu
+- 📁 Dotfile Framework: [🏡 Chezmoi](https://chezmoi.io)
 - 📦 Package Manager: [🍺 Homebrew](https://brew.sh)
 - 💲 Terminal: [⚡️ Hyper](https://hyper.is/)
 - 💅 Theme: [powerlevel10k](https://github.com/romkatv/powerlevel10k), [glow](https://github.com/charmbracelet/glow)
