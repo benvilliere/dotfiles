@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 ## This is the main entrypoint for all ~/.dotfiles/*
 ## It should be sourced from ~/.zshrc (injected at setup)
 

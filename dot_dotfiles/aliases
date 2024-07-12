@@ -2,3 +2,8 @@
 
 # chezmoi
 alias cm="chezmoi"
+
+# dotfile
+alias edit="dotfile edit"
+alias save="dotfile save"
+alias update="dotfile update"

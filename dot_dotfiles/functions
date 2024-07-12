@@ -1,15 +1,17 @@
 #!/bin/zsh
 
-function verbose() {
-  if [[ $DOTFILES_VERBOSE_OUTPUT != 0 ]]; then
+function echo_when() {
+  if [[ $2 != 0 ]]; then
     echo "${1}"
   fi
 }
 
+function verbose() {
+  echo_when "${1}" $DOTFILES_VERBOSE_OUTPUT
+}
+
 function very_verbose() {
-  if [[ $DOTFILES_VERY_VERBOSE_OUTPUT != 0 ]]; then
-    echo "${1}"
-  fi
+  echo_when "${1}" $DOTFILES_VERY_VERBOSE_OUTPUT
 }
 
 # Checks whether a function exists
@@ -62,10 +64,10 @@ function dotfile() {
   local function_arguments="${*:2}"
 
   if function_exists "${function_name}"; then
-    verbose "Calling function: ${function_name} with argument: ${2}"
+    very_verbose "🏘️ Calling function: ${function_name} with argument: ${2}"
     "${function_name}" "${function_arguments}"
   else
-    verbose "Error: dotfile command '${1}' does not exist"
+    echo "Error: dotfile command '${1}' does not exist"
     echo "--------------------------------------------"
     echo "Available dotfile commands:"
     available_dotfile_commands
@@ -75,7 +77,7 @@ function dotfile() {
 # Runs executable script within ~/.dotfiles
 # Usage: dotfile run setup
 function dotfile_run() {
-  verbose "Invoking dotfile_run $@"
+  very_verbose "🏘️ Invoking dotfile_run $@"
   local script="${HOME}/.dotfiles/${1}"
 
   if [[ ! -f $script ]]; then
@@ -84,13 +86,23 @@ function dotfile_run() {
     echo "Available executable scripts in ~/.dotfiles:"
     available_dotfile_executables
   else
-    verbose "Running: ${script}"
+    very_verbose "🏘️ Running: ${script}"
     . "${script}"
   fi
 }
 
 function dotfile_save() {
-  very_verbose "🏡 Applying chezmoi changes"
+  verbose "🏡 Updating remote chezmoi changes"
+  chezmoi update
+  verbose "🏡 Applying chezmoi changes"
+  chezmoi apply
+  source_zshrc
+  exec zsh
+  verbose "✅ Done."
+}
+
+function dotfile_apply() {
+  verbose "🏡 Applying chezmoi changes"
   chezmoi apply
   source_zshrc
   exec zsh
@@ -98,16 +110,14 @@ function dotfile_save() {
 }
 
 function dotfile_update() {
-  very_verbose "🏡 Updating remote chezmoi changes"
+  verbose "🏡 Updating remote chezmoi changes"
   chezmoi update
   source_zshrc
-  exec zsh
   verbose "✅ Done."
 }
 
 function dotfile_edit() {
-  very_verbose "🏡 Coming home"
+  verbose "🏡 Coming home"
   chezmoi cd
   code .
-  verbose "🏡 Welcome back!"
 }
