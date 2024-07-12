@@ -17,7 +17,7 @@ Here are the tools it installs and configures:
 - 🔌 Plugins: [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
 - 🧠 Local Generative AI: [Ollama](https://ollama.com/) (adds `ask` and `chat` aliases)
 - 🐍 Python: [Poetry](https://python-poetry.org/)
-- ⌾ Node: [nvm](https://github.com/nvm-sh/nvm), [bun](https://bun.sh/)
+- 🌐 Node: [nvm](https://github.com/nvm-sh/nvm), [bun](https://bun.sh/)
 
 There's actually a lot more stuff that you can find listed in the [Brewfile](./dot_dotfiles/brew/Brewfile). You should consider forking this repo and make it your own before installing, as you may not want to use all the stuff I'm using.
 
