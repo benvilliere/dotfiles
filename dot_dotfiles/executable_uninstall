@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+echo "🏡 Goodbye!"
+
+# echo "🗑️ Deleting ~/.dotfiles/*"
+# rm -rf "${HOME}/.dotfiles"
+
+# echo "🗑️ Deleting ~/.dotfile"
+# rm "${HOME}/.dotfile"
+
+echo "🗑️ Purging ~/.dotfiles"
+chezmoi purge
+
+echo "🗑️ Uninstalling chezmoi"
+brew uninstall chezmoi
+
+echo "🧹 Cleaning up ~/.zshrc file"
+sed -i '' '/source "${HOME}\/.dotfile"/d' "${HOME}/.zshrc"
+
+echo "💾 Reloading ~/.zshrc"
+source "${HOME}/.zshrc"
+
+echo "✅ Done."
+
+exec zsh
