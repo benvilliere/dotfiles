@@ -44,11 +44,6 @@ function source_dotfile_modules() {
   done
 }
 
-function source_dotfile() {
-  very_verbose "💾 Sourcing ~/.dotfile"
-  source "${HOME}/.dotfile"
-}
-
 function source_zshrc() {
   very_verbose "💾 Sourcing ~/.zshrc"
   source "${HOME}/.zshrc"
