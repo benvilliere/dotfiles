@@ -43,10 +43,14 @@ function source_dotfile_modules() {
 }
 
 function source_dotfile() {
-  verbose "💾 Sourcing ~/.dotfile"
+  very_verbose "💾 Sourcing ~/.dotfile"
   source "${HOME}/.dotfile"
 }
 
+function source_zshrc() {
+  very_verbose "💾 Sourcing ~/.zshrc"
+  source "${HOME}/.zshrc"
+}
 
 # Invokes any existing dotfile_ prefixed function
 # Usage:
@@ -86,25 +90,24 @@ function dotfile_run() {
 }
 
 function dotfile_save() {
-  verbose "🏡 Applying chezmoi changes"
+  very_verbose "🏡 Applying chezmoi changes"
   chezmoi apply
-  source_dotfile
+  source_zshrc
+  exec zsh
+  verbose "✅ Done."
 }
 
 function dotfile_update() {
-  verbose "🏡 Updating remote chezmoi changes"
+  very_verbose "🏡 Updating remote chezmoi changes"
   chezmoi update
-  source_dotfile
-  very_verbose "Done."
+  source_zshrc
+  exec zsh
+  verbose "✅ Done."
 }
 
 function dotfile_edit() {
-  verbose "🏡 Coming home"
+  very_verbose "🏡 Coming home"
   chezmoi cd
   code .
-  very_verbose "🏡 Welcome back!"
-}
-
-function current_file() {
-  echo "${(%):-%x}"
+  verbose "🏡 Welcome back!"
 }

@@ -1,12 +1,14 @@
-very_verbose "💾 Sourcing ~/.dotfiles/*"
+## This is the main entrypoint for all ~/.dotfiles/*
+## It should be sourced from ~/.zshrc (injected at setup)
 
-# Importing ~/.dotfiles/*
+# Loading base variables, functions and aliases
 source "${HOME}/.dotfiles/exports"
 source "${HOME}/.dotfiles/functions"
 source "${HOME}/.dotfiles/aliases"
 source "${HOME}/.dotfiles/styles"
 source "${HOME}/.dotfiles/plugins"
 
+# Loading modules recursively
 source_dotfile_modules
 
 very_verbose "🏡 Home sweet home"

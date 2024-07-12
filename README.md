@@ -2,4 +2,6 @@
 
 ## 🏡 Chezmoi dotfiles repository
 
-🚧 Work in progress.
+```sh
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply benvilliere
+```

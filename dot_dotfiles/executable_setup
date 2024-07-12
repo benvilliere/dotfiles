@@ -1,37 +1,25 @@
 #!/bin/zsh
 
-# set -e
-
 echo "🏡 Making yourself at home..."
 
 if [[ $(command -v brew) == "" ]]; then
   echo "🍺 Installing Hombrew"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" > /dev/null 2>&1
 else
   echo "🍺 Updating Homebrew"
-  brew update
+  brew update > /dev/null 2>&1
 fi
 
 echo "📦 Installing Homebrew Packages"
-brew bundle --file "${HOME}/.dotfiles/brew/Brewfile"
+brew bundle --file "${HOME}/.dotfiles/brew/Brewfile" > /dev/null 2>&1
 
-# have "${HOME}/.dotfile" "#!/bin/zsh\n"
-
-echo "Creating custom ~/.dotfile"
-local $zshrc_injection='source "${HOME}/.dotfile"'
-echo "----"
-echo $injection
-echo "----"
-
-if [[ ! -f "${HOME}/.dotfile" ]]; then
-  # touch "${HOME}/.dotfile"
-  local $injection="\. \"\$\{HOME\}\/.dotfile\""
-  echo "----"
-  echo $injection
-  echo "----"
-  # echo "#!/bin/zsh\n\nverbose '🏡 Home sweet home'" > "${HOME}/.dotfile"
-else
-  verbose "~/.dotfile already exists!"
+echo "💾 Updating ~/.zshrc file"
+local injection='source "${HOME}/.dotfile"'
+if ! grep -Fxq "${injection}" "${HOME}/.zshrc"; then
+  echo "${injection}" >> "${HOME}/.zshrc"
 fi
 
-echo "Done ~ 🏡 Welcome home!"
+echo "💾 Sourcing ~/.zshrc file"
+source "${HOME}/.zshrc"
+
+echo "✅ Done."

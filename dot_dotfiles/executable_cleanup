@@ -1,13 +1,20 @@
 #!/bin/zsh
 
-# set -e
 
-echo "🏡 Good bye..."
+echo "🏡 Goodbye!"
 
-echo "Deleting ~/.dotfiles/*"
+echo "🗑️ Deleting ~/.dotfiles/*"
 rm -rf "${HOME}/.dotfiles"
 
-echo "Deleting ~/.dotfile"
+echo "🗑️ Deleting ~/.dotfile"
 rm "${HOME}/.dotfile"
 
-echo "Don't forget to cleanup your ~/.zsrch"
+echo "🧹 Removing 'source \"${HOME}/.dotfile\"' from ~/.zshrc"
+sed -i '' '/source "${HOME}\/.dotfile"/d' "${HOME}/.zshrc"
+
+echo "💾 Reloading ~/.zshrc"
+source "${HOME}/.zshrc"
+
+echo "✅ Done."
+
+exec zsh
