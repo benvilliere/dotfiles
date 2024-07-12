@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+alias ask='ollama_oneshot'
+alias chat='ollama_chat'

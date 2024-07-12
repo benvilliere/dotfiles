@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+function ollama_oneshot() {
+  local model="${2:-llama3}"
+  ollama run "${model}" "${1}" | glow
+}
+
+function ollama_chat() {
+  local model="${1:-llama3}"
+  ollama run "${model}"
+}
