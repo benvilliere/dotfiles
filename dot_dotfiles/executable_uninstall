@@ -2,17 +2,18 @@
 
 echo "🏡 Goodbye!"
 
-# echo "🗑️ Deleting ~/.dotfiles/*"
-# rm -rf "${HOME}/.dotfiles"
-
-# echo "🗑️ Deleting ~/.dotfile"
-# rm "${HOME}/.dotfile"
-
-echo "🗑️ Purging ~/.dotfiles"
-chezmoi purge
+echo "🗑️ Purging chezmoi"
+chezmoi purge --force
+rm -rf "${HOME}/.local/share/chezmoi"
 
 echo "🗑️ Uninstalling chezmoi"
 brew uninstall chezmoi
+
+echo "🗑️ Deleting ~/.dotfiles/*"
+rm -rf "${HOME}/.dotfiles"
+
+echo "🗑️ Deleting ~/.dotfile"
+rm "${HOME}/.dotfile"
 
 echo "🧹 Cleaning up ~/.zshrc file"
 sed -i '' '/source "${HOME}\/.dotfile"/d' "${HOME}/.zshrc"
