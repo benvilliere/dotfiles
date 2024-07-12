@@ -14,13 +14,13 @@ echo "📦 Installing zsh"
 brew install zsh > /dev/null 2>&1
 
 echo "💾 Setting zsh as the default shell"
-chsh -s $(which zsh)
+chsh -s $(which zsh) > /dev/null 2>&1
 
 echo "📦 Installing chezmoi"
 brew install chezmoi > /dev/null 2>&1
 
 echo "🏡 Initializing chezmoi"
-chezmoi init benvilliere 2>&1
+chezmoi init benvilliere > /dev/null 2>&1
 
 echo "🏡 Applying chezmoi"
 chezmoi apply
