@@ -11,7 +11,7 @@ This repo is a way for me to quickly configure a new machine with the tools I us
 Here are the tools it installs and configures:
 
 - 🍏 Compatible with macOS and Ubuntu
-- 📁 Dotfile Framework: [🏡 Chezmoi](https://chezmoi.io)
+- 📁 Dotfile Manager: [🏡 Chezmoi](https://chezmoi.io)
 - 📦 Package Manager: [🍺 Homebrew](https://brew.sh)
 - 💲 Terminal: [⚡️ Hyper](https://hyper.is/)
 - 💅 Theme: [powerlevel10k](https://github.com/romkatv/powerlevel10k), [glow](https://github.com/charmbracelet/glow)
@@ -34,42 +34,48 @@ sh -c "$(curl -fsLS https://raw.githubusercontent.com/benvilliere/dotfiles/HEAD/
 
 ## Commands
 
+This dotfile setup comes with a minimalist yet powerful `dotfile` commandlet written in bash. You can browse the underlying [functions here](./dot_dotfiles/functions).
+
+- Save and apply any updates made to the local dotfiles:
+
 ```sh
 dotfile save
 ```
 
-Saves and applies any updates made to the local dotfiles.
+- Pull the latest changes from github and apply them to the local environment:
 
 ```sh
 dotfile update
 ```
 
-Pulls the latest changes from github and applies them to the local environment.
+- Open the source code of this repo to customize it:
 
 ```sh
 dotfile edit
 ```
 
-Opens the source code of this repo so that you can customize it.
-
-```sh
-dotfile run
-```
-
-You can run any executable file located within ~/.dotfiles like so:
+- Run any executable (`chmod +x`) file located within ~/.dotfiles like so:
 
 ```sh
 dotfile run <script_name>
 ```
 
-At the moment, only two scripts are available by default:
+At the moment, only two scripts are available:
 
 - `install`: Idempotent install script used to setup a new machine
 - `uninstall`: Script that uninstalls `chezmoi`, its files, and all the dotfiles added by this repository. **Note:** it won't uninstall brew or other brew installed packages.
 
+You can easily add more scripts as you see fit.
+
 ## Making it your own
 
 The organization is fairly straightforward and I'm trying to keep it as minimalistic and catered to my needs as possible. If you plan on using it, I would highly recommend you fork this repo and adjust it to your own liking.
+
+First, make sure you're familiar with the core [🏡 Chezmoi](https://chezmoi.io) concepts.
+
+The _TLDR;_ is that it checks out the desired dotfiles repo in `~/.local/share/chezmoi` (that's the standard location). That's the standard location where the source of the dotfiles setup lies on your system.
+
+From there, as soon as you run `chezmoi apply`, it will copy the contents to your home folder `~/` (`$HOME`). It can apply all sorts of transformations for you (the most obvious one is renaming `dot_file` to `.file`), it also comes with a templating system and utilities to leverage password managers and much much more. I'm not leveraging many of its features yet.
 
 I have organized the repo like so:
 
