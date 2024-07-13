@@ -34,19 +34,27 @@ sh -c "$(curl -fsLS https://raw.githubusercontent.com/benvilliere/dotfiles/HEAD/
 
 ## Commands
 
-### `dotfile save`
+```sh
+dotfile save
+```
 
 Saves and applies any updates made to the local dotfiles.
 
-### `dotfile update`
+```sh
+dotfile update
+```
 
 Pulls the latest changes from github and applies them to the local environment.
 
-### `dotfile edit`
+```sh
+dotfile edit
+```
 
 Opens the source code of this repo so that you can customize it.
 
-### `dotfile run`
+```sh
+dotfile run
+```
 
 You can run any executable file located within ~/.dotfiles like so:
 
