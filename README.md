@@ -108,10 +108,14 @@ Likewise, add and `chmod +x` any script within `~/.dotfiles` to make it callable
 
 That's pretty much all there is to it!
 
-## List of everything that's installed
+## (Incomplete) list of everything that's installed
+
+Because I'm strictly using Homebrew as my package manager, the comprehensive list of things that are installed on the machine is easily available in the [Brewfile](./dot_dotfiles/brew/Brewfile), but I thought it'd be great to list them out for future reference:
 
 [gitleaks](https://github.com/gitleaks/gitleaks): Protect and discover secrets using Gitleaks 🔑
 [pre-commit](https://pre-commit.com/#install): A framework for managing and maintaining multi-language pre-commit hooks.
+
+Bear with me, I'll add more as I go.
 
 ## Roadmap
 
