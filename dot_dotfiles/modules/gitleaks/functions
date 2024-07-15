@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+function gitleaks_detect_leaks() {
+  local source="${1:-.}"
+  gitleaks detect --source "${source}" -v
+}
