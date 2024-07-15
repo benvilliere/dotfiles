@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+function brew_bundle_dump_chezmoi() {
+  chezmoi cd
+  cd ./dot_dotfiles/brew
+  brew bundle dump --force
+}

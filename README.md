@@ -108,6 +108,21 @@ Likewise, add and `chmod +x` any script within `~/.dotfiles` to make it callable
 
 That's pretty much all there is to it!
 
+## List of everything that's installed
+
+[gitleaks](https://github.com/gitleaks/gitleaks): Protect and discover secrets using Gitleaks 🔑
+[pre-commit](https://pre-commit.com/#install): A framework for managing and maintaining multi-language pre-commit hooks.
+
+## Roadmap
+
+Features I'm looking to add in the near future:
+[ ] Move all contents to a sub directory
+[ ] Add tests suite using bats-core
+[ ] Run tests run within a Docker image
+[ ] Add linting script
+[ ] Add secrets leaking check
+[ ] Add a Github workflow with code checks
+
 ## Contributing
 
 If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request. Contributions are welcome!
