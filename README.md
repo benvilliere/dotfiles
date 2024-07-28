@@ -85,7 +85,7 @@ I have organized the repo like so:
 - Whenever you open your terminal, your `~/.zshrc` file gets automatically loaded; in turn, the `~/.dotfile` gets loaded as well. In it, we load the `aliases`, `exports`, `functions`, `plugins` and `styles` located under `~/.dotfiles`.
 - Additionally, all files within `~/.dotfiles/modules/*` get sourced recursively. It makes it very convenient to add vendor/tool-specific aliases and functions and much more scalable and easy to maintain.
 
-You can declare `dotfile_*` functions which will become automatically available to the `dotfile <function_suffix>` cli tool.
+You can declare `dotfile_*` functions which will become automatically available to the `dotfile <function_suffix>` CLI tool.
 
 Example:
 

@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+function dotfile_obsidian_save_notes() {
+  cd "~/Notes"
+  commit "New Notes"
+  cd -
+}
